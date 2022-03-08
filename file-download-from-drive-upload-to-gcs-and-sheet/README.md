@@ -18,6 +18,10 @@ Download and save as "client_secret.json"
 
 (Cloud Storage and Cloud Vision) and another pair from G Suite (Google Drive and Google Sheets)
 
+## Create a bucket in Google cloud storage
+
+Add bucket name in the code
+
 ## Run
 
 ```
