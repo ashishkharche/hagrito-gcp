@@ -1,0 +1,32 @@
+1
+00:00:00,000 --> 00:00:00,700
+ This is an example,
+
+2
+00:00:00,700 --> 00:00:01,800
+ text file.
+
+3
+00:00:01,800 --> 00:00:04,200
+ It can be used to test the artificial intelligence
+
+4
+00:00:04,200 --> 00:00:05,300
+ solution.
+
+5
+00:00:05,300 --> 00:00:08,600
+ The solution can transcribe spoken dialogue in to
+
+6
+00:00:08,600 --> 00:00:09,100
+ text.
+
+7
+00:00:09,100 --> 00:00:12,100
+ It can convert text into subtitles and it can translate
+
+8
+00:00:12,100 --> 00:00:14,500
+ subtitles to multiple Target languages.
+

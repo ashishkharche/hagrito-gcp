@@ -1,0 +1,8 @@
+This is an example,
+text file.
+It can be used to test the artificial intelligence
+solution.
+The solution can transcribe spoken dialogue in to
+text.
+It can convert text into subtitles and it can translate
+subtitles to multiple Target languages.
