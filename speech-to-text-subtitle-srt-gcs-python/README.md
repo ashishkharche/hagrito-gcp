@@ -149,3 +149,29 @@ Translate
 ```
 python3 translate_txt.py --project_id $PROJECT_ID --source_lang en --target_lang ko,hi --input_uri gs://$BUCKET_IN/en.txt --output_uri gs://$BUCKET_OUT/
 ```
+
+Copy output files to local
+
+```
+gsutil cp gs://$BUCKET_OUT/* .
+```
+
+View the index.csv file, which contains information about the translation operation output files:
+
+Here you can see that the service translated the source file en.txt and wrote two output files, in Hindi and Korean, respectively.
+
+```
+cat index.csv
+```
+
+Create SRT subtitles from the Hindi and Korean plain text files:
+
+```
+python3 txt2srt.py --srt en.srt --index index.csv
+```
+
+## References
+
+[Creating translated subtitles with AI  |  Google Cloud Platform Community](https://cloud.google.com/community/tutorials/speech2srt)
+
+[Using the Speech-to-Text API with Python](https://codelabs.developers.google.com/codelabs/cloud-speech-text-python3#3)
