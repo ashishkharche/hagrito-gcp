@@ -28,7 +28,7 @@ $ gcloud config set project subtitlespython
 
 ### Method 2
 
-gcloud init onfigguration
+gcloud init configuration
 
 ```
 $ gcloud init
