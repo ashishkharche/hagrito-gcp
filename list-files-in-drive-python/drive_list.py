@@ -33,7 +33,7 @@ def drive_get_img(fname):
     if rsp:
         target = rsp[0]  # use first matching file
         fileId = target['id']
-        fname = target['name']
+        fname = f'{target["name"]}.html'
         mtype = target['mimeType']
         binary = DRIVE.files().export_media(fileId=fileId, mimeType='text/html').execute()
         file_id = fileId
