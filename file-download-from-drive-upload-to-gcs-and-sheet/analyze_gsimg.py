@@ -31,7 +31,10 @@ from googleapiclient.http import MediaIoBaseDownload
 from httplib2 import Http
 from oauth2client import file, client, tools
 
-k_ize = lambda b: '%6.2fK' % (b / 1000.)  # bytes to kBs
+
+def k_ize(b): return '%6.2fK' % (b / 1000.)  # bytes to kBs
+
+
 FILE = 'ddgcloudstorage.png'
 BUCKET = 'bucketimagearchivepython'
 PARENT = 'oheayh'  # YOUR IMG FILE PREFIX
@@ -97,7 +100,8 @@ def gcs_blob_upload(fname, bucket, media, mimetype):
     # build blob metadata and upload via GCS API
     body = {'name': fname, 'uploadType': 'multipart', 'contentType': mimetype}
     return GCS.objects().insert(bucket=bucket, body=body,
-                                media_body=http.MediaIoBaseUpload(io.BytesIO(media), mimetype),
+                                media_body=http.MediaIoBaseUpload(
+                                    io.BytesIO(media), mimetype),
                                 fields='bucket,name').execute()
 
 
@@ -109,13 +113,14 @@ def vision_label_img(img, top):
         'image': {'content': img},
         'features': [{'type': 'LABEL_DETECTION', 'maxResults': top}],
     }]}
-    rsp = VISION.images().annotate(body=body).execute().get('responses', [{}])[0]
+    rsp = VISION.images().annotate(
+        body=body).execute().get('responses', [{}])[0]
 
     # return top labels for image as CSV for Sheet (row)
     if 'labelAnnotations' in rsp:
         return ', '.join('(%.2f%%) %s' % (
-            label['score'] * 100., label['description']) \
-                         for label in rsp['labelAnnotations'])
+            label['score'] * 100., label['description'])
+            for label in rsp['labelAnnotations'])
 
 
 def sheet_append_row(sheet, row):
@@ -139,7 +144,8 @@ def main(fname, bucket, sheet_id, folder, top, debug):
         return
     fname, mtype, ftime, data = rsp
     if debug:
-        print('Downloaded %r (%s, %s, size: %d)' % (fname, mtype, ftime, len(data)))
+        print('Downloaded %r (%s, %s, size: %d)' %
+              (fname, mtype, ftime, len(data)))
 
     # upload file to GCS
     gcsname = '%s/%s' % (folder, fname)
